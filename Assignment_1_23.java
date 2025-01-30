@@ -2,21 +2,38 @@ import java.util.Scanner;
 public class Assignment_1_23{
     public static void main(String[] args){
         Scanner myObj = new Scanner(System.in);
-        System.out.print("Enter the percentage: ");
-        double number = myObj.nextInt();
+        int terminate = 0, count = 0;
+        double number = 0, total = 0;
+
+        while (terminate != -1){
+        System.out.print("Enter the percentage(-1 to end): ");
+        number = myObj.nextInt();
+        terminate = (int) number;
+        if (number > 110){
+            System.out.print("Invalid input. Please ensure number is between 0 and 110.\nEnter the percentage(-1 to end):");
+            //number = myObj.nextInt();
+            continue;
+        }
+        total += number;
+        if (terminate == -1){
+            break;
+        }
+        count++;
+        }
+        double average = total / count;
         String letterGrade = "";
-        if (number >= 90){
+        if (average >= 90){
             letterGrade = "A";
-        } else if (number >= 80 && number < 90){
+        } else if (average >= 80 && average < 90){
             letterGrade = "B";
-        } else if (number >= 70 && number < 80){
+        } else if (average >= 70 && average < 80){
             letterGrade = "C";
-        } else if (number >= 60 && number < 70){
+        } else if (average >= 60 && average < 70){
             letterGrade = "D";
         } else {
             letterGrade = "F";
         }
-        System.out.printf("Your grade for %.2f is:  %s\n", number, letterGrade);
+        System.out.printf("Your grade for %.2f is:  %s\n", average, letterGrade);
     }
 } 
 
